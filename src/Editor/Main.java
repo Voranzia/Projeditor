@@ -11,7 +11,7 @@ class Editor {
         Menu [] men = new Menu[2];
         boolean saisieOk;
         try {
-            men[0] = new Menu("Que voulez vous faire ?", actions[]);
+            men[0] = new Menu("Que voulez vous faire ?", actions);
             men[1] = new Menu("Quelle figure voulez vous ajouter ?", figures);
             men[2] = new Menu("Quelle couleur souhaitez-vous appliquer ?", couleurs);
         }catch(ChoixPasBon ex){
@@ -114,13 +114,12 @@ class Menu {
         Terminal.ecrireStringln ("Entrez le nom du fichier avec son extension");
         String imageNom = Terminal.lireString();
         Image monImage = new Image
-        monImage = ImageUtil.readImage(imageNom);
-        largeur = ImageUtil.getImageWidth(imageNom);
-        hauteur = ImageUtil.getImageHeight(imageNom);
-        Afficheur imageReference = new Afficheur(largeur, hauteur, imageTab, 100, 100, imageNom);
-        Afficheur imageEditeur = new Afficheur(largeur, hauteur, imageTab, 100, 100, imageNom);
-        Sauvegarde.creationEtat(imageTab);
-        return imageTab;
+        monImage.imageTab = ImageUtil.readImage(monImage.imageNom);
+        monImage.largeur = ImageUtil.getImageWidth(monImage.imageNom);
+        monImage.hauteur = ImageUtil.getImageHeight(monImage.imageNom);
+        Afficheur imageReference = new Afficheur(monImage.largeur, monImage.hauteur, monImage.imageTab, 100, 100, monImage.imageNom);
+        Afficheur imageEditeur = new Afficheur(monImage.largeur, monImage.hauteur, monImage.imageTab, 130+monImage.largeur, 100, imageNom);
+        Sauvegarde.creationEtat(monImage);
     }
     int[] tourner(){
         Actions rotation = new Actions;
