@@ -5,7 +5,7 @@ import java.io.*;
 import javax.imageio.*;
 
 public class ImageUtil {
-  static int[] readImage(String fnam) throws IOException{
+  static int[] readImage(String fnam) throws java.io.IOException{
     int[] tab;
     BufferedImage bufi = ImageIO.read(new File(fnam));
     int width = bufi.getWidth();
@@ -16,7 +16,7 @@ public class ImageUtil {
                       width);
     return tab;
   }
-  static int getImageWidth(String fnam) throws IOException{
+  static int getImageWidth(String fnam) throws java.io.IOException{
     BufferedImage bufi = ImageIO.read(new File(fnam));
     return bufi.getWidth();
   }

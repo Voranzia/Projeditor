@@ -1,7 +1,8 @@
 package Editor;
 
 public class Image {
+    String imageNom;
     int[] imageTab;
-    imageTab [1000] = 54;
-    return imageTab;
+    int largeur;
+    int hauteur;
 }
